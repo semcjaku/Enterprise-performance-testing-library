@@ -7,10 +7,12 @@ public class queryTimeTester implements BaseTimeTester {
     private Connection dbConnector;
     private Map<Statement,Integer> queryTimes;
     private Method methodToTest;
+    private Object[] parameters;
 
-    protected queryTimeTester(Method m, Connection dbCon){
+    protected queryTimeTester(Method m,Object[] p, Connection dbCon){
         methodToTest = m;
         dbConnector = dbCon;
+        parameters = p;
     }
 
     @Override

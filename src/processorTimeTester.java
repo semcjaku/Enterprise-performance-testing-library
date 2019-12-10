@@ -3,9 +3,11 @@ import java.lang.reflect.Method;
 public class processorTimeTester implements BaseTimeTester {
     private Integer ticks;
     private Method methodToTest;
+    private Object[] parameters;
 
-    protected processorTimeTester(Method m){
+    protected processorTimeTester(Method m, Object[] p){
         methodToTest = m;
+        parameters = p;
     }
 
     @Override
@@ -15,6 +17,6 @@ public class processorTimeTester implements BaseTimeTester {
 
     @Override
     public String toString() {
-        return "processorTimeTester{" + "ticks=" + ticks + " for method " + methodToTest + "}\n";
+        return "processorTimeTester{" + "ticks=" + ticks + " for method " + methodToTest + "}";
     }
 }

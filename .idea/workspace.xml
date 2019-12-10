@@ -11,6 +11,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -30,6 +31,11 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -54,6 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1575730850794</updated>
       <workItem from="1575730857970" duration="4189000" />
+      <workItem from="1575973300085" duration="17749000" />
     </task>
     <servers />
   </component>
@@ -61,9 +68,13 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="729" y="219" key="#com.intellij.ide.util.MemberChooser" timestamp="1575735168573">
+    <state x="729" y="219" key="#com.intellij.ide.util.MemberChooser" timestamp="1575993746154">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="729" y="219" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1575735168573" />
+    <state x="729" y="219" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1575993746154" />
+    <state x="690" y="294" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1575983476992">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="294" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575983476992" />
   </component>
 </project>
