@@ -78,6 +78,7 @@ public class Tester {
             Annotation[] methodsAnnotations = new Annotation[classMethods.length];
             for(int i=0;i<classMethods.length;i++) {
                 methodsAnnotations[i] = classMethods[i].getDeclaredAnnotation(TestMethod.class);
+                classMethods[i].trySetAccessible();
             }
 
             for(int i=0;i<methodsAnnotations.length;i++) {

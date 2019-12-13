@@ -19,7 +19,7 @@ public class DummyMain {
     }
 
     @TestMethod(testedValue = {Tester.TestStrategy.clock,Tester.TestStrategy.processor}, indicesOfParameters = {0,1})
-    public void printSum(int a,int b) {
+    private static void printSum(int a,int b) {
         System.out.println(a+b);
     }
 }
