@@ -5,7 +5,7 @@ public class clockTimeTester implements BaseTimeTester {
     private Method methodToTest;
     private Object[] parameters;
 
-    protected clockTimeTester(Method m, Object[] p){
+    protected clockTimeTester(Method m, Object[] p, Object obj){
         methodToTest = m;
         parameters = p;
     }

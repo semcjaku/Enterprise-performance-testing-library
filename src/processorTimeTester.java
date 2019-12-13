@@ -5,7 +5,7 @@ public class processorTimeTester implements BaseTimeTester {
     private Method methodToTest;
     private Object[] parameters;
 
-    protected processorTimeTester(Method m, Object[] p){
+    protected processorTimeTester(Method m, Object[] p, Object obj){
         methodToTest = m;
         parameters = p;
     }
