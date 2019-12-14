@@ -70,10 +70,10 @@ public class Tester {
         List<BaseTimeTester> testerList = new ArrayList<>();
         for(MethodTestWrapper method : methodsToTest) {
             if(method.strategy.equals(TestStrategy.processor)) {
-                testerList.add(new processorTimeTester(method.m,method.parameters));
+                testerList.add(new processorTimeTester(method.m,method.parameters, instanceOfClass));
             }
             else if (method.strategy.equals(TestStrategy.clock)) {
-                testerList.add(new clockTimeTester(method.m,method.parameters));
+                testerList.add(new clockTimeTester(method.m,method.parameters, instanceOfClass));
             }
             else {
                 testerList.add(new queryTimeTester(method.m,method.parameters,dbConnector));

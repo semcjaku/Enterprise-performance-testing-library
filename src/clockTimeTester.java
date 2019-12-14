@@ -1,7 +1,7 @@
 import java.lang.reflect.Method;
 
 public class clockTimeTester implements BaseTimeTester {
-    private Integer time;
+    private Long time;
     private Method methodToTest;
     private Object[] parameters;
     private Object instanceofObject;
@@ -14,11 +14,20 @@ public class clockTimeTester implements BaseTimeTester {
 
     @Override
     public void runTest() {
-        //execute test
+        try{
+            long startTime = System.nanoTime();
+            methodToTest.invoke(instanceofObject, parameters);
+            long searchTime = System.nanoTime()-startTime;
+            time = searchTime;
+            System.out.println(time);
+        }
+        catch (Throwable e){
+            System.err.println(e);
+        }
     }
 
     @Override
     public String toString() {
-        return "clockTimeTester{" + "time=" + time + " for method " + methodToTest + "}";
+        return "clockTimeTester{" + " time= " + time + " nanoseconds for method " + methodToTest + "}";
     }
 }
