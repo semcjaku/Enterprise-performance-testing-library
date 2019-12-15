@@ -28,6 +28,7 @@ public class clockTimeTester implements BaseTimeTester {
            Clock baseclock = Clock.systemDefaultZone();
 
            //measuring time in clock
+           methodToTest.trySetAccessible();
            Instant instantstart = baseclock.instant();
            methodToTest.invoke(instanceofObject, parameters);
            Instant instantfinish = baseclock.instant();
@@ -75,7 +76,7 @@ public class clockTimeTester implements BaseTimeTester {
            result = result.minus(Long.parseLong(nanos[0]), ChronoUnit.NANOS);
            //System.out.println(result);
            String stringresult = result.toString();
-           stringresult = stringresult.substring(11,29);
+           stringresult = stringresult.substring(11);
            ticks = stringresult;
 
 
