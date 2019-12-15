@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -21,7 +22,7 @@ public class Tester {
 
     public Tester(Object userClass, Object[] methodsParameters) {
         //reset fields
-        testResults = new ArrayList<>();
+        testResults = null;
         methodsToTest = new ArrayList<>();
         dbConnector = null;
         testResults = null;
@@ -61,22 +62,63 @@ public class Tester {
         }
     }
 
-    public void setDbConnector(Connection dbConnector) {
-        this.dbConnector = dbConnector;
+    public Tester(Object userClass, Object[] methodsParameters, Connection dbc) {
+        dbConnector = dbc;
+        //reset fields
+        testResults = null;
+        methodsToTest = new ArrayList<>();
+        dbConnector = null;
+        testResults = null;
+        try {
+            classToTest = userClass.getClass();
+            instanceOfClass = userClass;
+
+            //check annotations and fill methodsToTest
+            Method[] classMethods = classToTest.getDeclaredMethods();
+            Annotation[] methodsAnnotations = new Annotation[classMethods.length];
+            for(int i=0;i<classMethods.length;i++) {
+                methodsAnnotations[i] = classMethods[i].getDeclaredAnnotation(TestMethod.class);
+                classMethods[i].trySetAccessible();
+            }
+
+            for(int i=0;i<methodsAnnotations.length;i++) {
+                if(methodsAnnotations[i] instanceof TestMethod) {
+                    //for each element in array of strategies build wrapper and insert into methodsToTest
+                    for(TestStrategy str : ((TestMethod)methodsAnnotations[i]).testedValue()) {
+                        MethodTestWrapper wrap = new MethodTestWrapper();
+                        wrap.m = classMethods[i];
+                        wrap.strategy = str;
+
+                        int[] paramIdx = ((TestMethod)methodsAnnotations[i]).indicesOfParameters();
+                        wrap.parameters = new Object[paramIdx.length];
+                        for(int p=0;p<paramIdx.length;p++) {
+                            wrap.parameters[p] = methodsParameters[paramIdx[p]];
+                        }
+
+                        methodsToTest.add(wrap);
+                    }
+                }
+            }
+        }
+        catch(Throwable e) {
+            System.err.println(e.getMessage());
+            e.getStackTrace();
+        }
     }
 
     public void performTest(){
         //for each Method in methodsToTest create function tester corresponding to TestStrategy
+        testResults = new ArrayList<>();
         List<BaseTimeTester> testerList = new ArrayList<>();
         for(MethodTestWrapper method : methodsToTest) {
             if(method.strategy.equals(TestStrategy.processor)) {
-                testerList.add(new processorTimeTester(method.m,method.parameters, instanceOfClass));
+                testerList.add(new processorTimeTester(method.m,method.parameters,instanceOfClass));
             }
             else if (method.strategy.equals(TestStrategy.clock)) {
-                testerList.add(new clockTimeTester(method.m,method.parameters, instanceOfClass));
+                testerList.add(new clockTimeTester(method.m,method.parameters,instanceOfClass));
             }
             else {
-                testerList.add(new queryTimeTester(method.m,method.parameters,dbConnector));
+                testerList.add(new queryTimeTester(method.m,method.parameters,dbConnector,instanceOfClass));
             }
         }
         //for each function tester do functiontester.runTest() and add functiontester.toString() to testResults
@@ -95,9 +137,12 @@ public class Tester {
 
     public void saveResults(String path){
         //write testResults into file specified with path
-        Path file = Paths.get(path);
+        File file = new File(path);
+        Path filepath = file.toPath();
         try  {
-            Files.write(file, testResults, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+            if(!file.exists())
+                file.createNewFile();
+            Files.write(filepath, testResults, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
         }
         catch (IOException e) {
             System.err.println(e.getMessage());

@@ -9,7 +9,7 @@ public class queryTimeTester implements BaseTimeTester {
     private Method methodToTest;
     private Object[] parameters;
 
-    protected queryTimeTester(Method m,Object[] p, Connection dbCon){
+    protected queryTimeTester(Method m,Object[] p, Connection dbCon, Object obj){
         methodToTest = m;
         dbConnector = dbCon;
         parameters = p;
