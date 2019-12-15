@@ -19,13 +19,13 @@ public class processorTimeTester implements BaseTimeTester {
             methodToTest.invoke(instanceofObject, parameters);
             long searchTime = System.nanoTime()-startTime;
             time_nanos = searchTime;
-            System.out.println(time_nanos);
+            //System.out.println(time_nanos);
 
             long startTime1 = System.currentTimeMillis();
             methodToTest.invoke(instanceofObject, parameters);
             long searchTime1 = System.currentTimeMillis()-startTime1;
             time_milis = searchTime1;
-            System.out.println(time_milis);
+            //System.out.println(time_milis);
         }
         catch (Throwable e){
             System.err.println(e);
@@ -34,7 +34,7 @@ public class processorTimeTester implements BaseTimeTester {
 
     @Override
     public String toString() {
-        return "processorTimeTester{" + "\n time = " + time_nanos + " nanoseconds (non thread safe)" + "\n"
+        return "processorTimeTester{" + "\ntime = " + time_nanos + "nanoseconds (non thread safe)" + "\n"
                 + " time = " + time_milis + " miliseconds (thread safe) \n for method *" + methodToTest + "*}\n";
     }
 }
