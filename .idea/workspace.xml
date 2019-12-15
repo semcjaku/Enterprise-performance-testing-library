@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="475957e5-43f4-4cbe-9396-6f9ea3a629ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/testingofprocessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/clockTimeTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/clockTimeTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/processorTimeTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/processorTimeTester.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/clockTimeTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/clockTimeTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/processorTimeTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/processorTimeTester.java" afterDir="false" />
     </list>
@@ -101,30 +101,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="294" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575983476992" />
-    <state width="1493" height="263" key="GridCell.Tab.0.bottom" timestamp="1576342304209">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="385" key="GridCell.Tab.0.bottom" timestamp="1576368079739">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="263" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1576342304209" />
-    <state width="1493" height="263" key="GridCell.Tab.0.center" timestamp="1576342304208">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="385" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576368079739" />
+    <state width="1877" height="385" key="GridCell.Tab.0.center" timestamp="1576368079739">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="263" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1576342304208" />
-    <state width="1493" height="263" key="GridCell.Tab.0.left" timestamp="1576342304207">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="385" key="GridCell.Tab.0.center/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576368079739" />
+    <state width="1877" height="385" key="GridCell.Tab.0.left" timestamp="1576368079739">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="263" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1576342304207" />
-    <state width="1493" height="263" key="GridCell.Tab.0.right" timestamp="1576342304209">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="385" key="GridCell.Tab.0.left/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576368079739" />
+    <state width="1877" height="385" key="GridCell.Tab.0.right" timestamp="1576368079739">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="263" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1576342304209" />
+    <state width="1877" height="385" key="GridCell.Tab.0.right/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576368079739" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1576002803394">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576002803394" />
-    <state x="529" y="272" key="com.intellij.ide.util.TipDialog" timestamp="1576320913256">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1576346509383">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="529" y="272" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1576320913256" />
-    <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576001702340" />
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576346509383" />
   </component>
 </project>

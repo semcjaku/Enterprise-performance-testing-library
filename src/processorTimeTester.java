@@ -1,23 +1,12 @@
 import java.lang.reflect.Method;
-import java.lang.reflect.Method;
-import java.util.Date;
-import java.time.Clock;
-import java.time.*;
-
-
-
 
 public class processorTimeTester implements BaseTimeTester {
-    private Long ticks;
+    private Long time_nanos, time_milis;
     private Method methodToTest;
     private Object[] parameters;
     private Object instanceofObject;
 
-    //long curTicks = Clock.getTicks();
-
-
-
-    public processorTimeTester(Method m, Object[] p, Object obj){
+    protected processorTimeTester(Method m, Object[] p, Object obj){
         methodToTest = m;
         parameters = p;
         instanceofObject =  obj;
@@ -25,18 +14,19 @@ public class processorTimeTester implements BaseTimeTester {
 
     @Override
     public void runTest() {
-       try{
-           Clock baseclock = Clock.systemDefaultZone();
-           Instant instantstart = baseclock.instant();
+        try{
+            long startTime = System.nanoTime();
+            methodToTest.invoke(instanceofObject, parameters);
+            long searchTime = System.nanoTime()-startTime;
+            time_nanos = searchTime;
+            System.out.println(time_nanos);
 
-           methodToTest.invoke(instanceofObject, parameters);
-
-           Instant instantfinish = baseclock.instant();
-
-           System.out.println(instantstart);
-           System.out.println(instantfinish);
-           //System.out.println(ticks);
-       }
+            long startTime1 = System.currentTimeMillis();
+            methodToTest.invoke(instanceofObject, parameters);
+            long searchTime1 = System.currentTimeMillis()-startTime1;
+            time_milis = searchTime1;
+            System.out.println(time_milis);
+        }
         catch (Throwable e){
             System.err.println(e);
         }
@@ -44,13 +34,7 @@ public class processorTimeTester implements BaseTimeTester {
 
     @Override
     public String toString() {
-        return "processorTimeTester{" + " ticks= " + ticks + " for method " + methodToTest + "}";
-    }
-
-
-
-    public void main(String[] args) {
-        this.runTest();
-
+        return "processorTimeTester{" + "\n time = " + time_nanos + " nanoseconds (non thread safe)" + "\n"
+                + " time = " + time_milis + " miliseconds (thread safe) \n for method *" + methodToTest + "*}\n";
     }
 }
