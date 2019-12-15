@@ -90,7 +90,7 @@ public class clockTimeTester implements BaseTimeTester {
 
     @Override
     public String toString() {
-        return "clockTimeTester{" + " \nclock time = " + ticks + " \nfor method *" + methodToTest + "*}";
+        return "clockTimeTester{" + " \nclock time = " + ticks + " \nfor method *" + methodToTest + "*}\n";
     }
 
 

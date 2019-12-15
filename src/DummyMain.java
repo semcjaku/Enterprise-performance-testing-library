@@ -6,6 +6,8 @@ public class DummyMain {
         testthis.performTest();
         testthis.showResults();
         testthis.saveResults("C:/Temp/nowy.txt");
+
+
     }
 
 

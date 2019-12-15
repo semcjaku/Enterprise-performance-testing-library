@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="475957e5-43f4-4cbe-9396-6f9ea3a629ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Test1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/DummyMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/DummyMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/META-INF/Enterprise-performance-testing-library.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/clockTimeTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/clockTimeTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/processorTimeTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/processorTimeTester.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DummyMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DummyMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/clockTimeTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/clockTimeTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/processorTimeTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/processorTimeTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +52,30 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DummyMain">
+  <component name="RunManager" selected="Application.Test3">
     <configuration name="DummyMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DummyMain" />
+      <module name="Enterprise-performance-testing-library" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test1" />
+      <module name="Enterprise-performance-testing-library" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test2" />
+      <module name="Enterprise-performance-testing-library" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test3" />
       <module name="Enterprise-performance-testing-library" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -66,6 +90,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test3" />
+        <item itemvalue="Application.Test2" />
+        <item itemvalue="Application.Test1" />
         <item itemvalue="Application.DummyMain" />
         <item itemvalue="Application.testingofprocessor" />
       </list>
@@ -105,6 +132,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="274" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1576451031703">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="274" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576451031703" />
     <state x="729" y="219" key="#com.intellij.ide.util.MemberChooser" timestamp="1575993746154">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -113,30 +144,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="294" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575983476992" />
-    <state width="1877" height="456" key="GridCell.Tab.0.bottom" timestamp="1576448356746">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1576452833612">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="263" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1576342304209" />
     <state width="1877" height="456" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576448356746" />
-    <state width="1877" height="456" key="GridCell.Tab.0.center" timestamp="1576448356746">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576452833612" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1576452833612">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="263" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1576342304208" />
     <state width="1877" height="456" key="GridCell.Tab.0.center/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576448356746" />
-    <state width="1877" height="456" key="GridCell.Tab.0.left" timestamp="1576448356746">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576452833612" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1576452833612">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="263" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1576342304207" />
     <state width="1877" height="456" key="GridCell.Tab.0.left/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576448356746" />
-    <state width="1877" height="456" key="GridCell.Tab.0.right" timestamp="1576448356746">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576452833612" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1576452833612">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="263" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1576342304209" />
     <state width="1877" height="456" key="GridCell.Tab.0.right/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576448356746" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576452833612" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1576452794926">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576452794926" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1576452794926">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576452794926" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1576452794926">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576452794926" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1576452794926">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576452794926" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1576002803394">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576002803394" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1576452868189">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1576452868189" />
     <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1576418988019">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
