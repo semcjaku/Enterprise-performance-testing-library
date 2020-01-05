@@ -6,9 +6,13 @@ public class DummyMain {
         testthis.performTest();
         testthis.showResults();
         testthis.saveResults("C:/Temp/nowy.txt");
+
+
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.query}, indicesOfParameters = {})
+
+
+    @TestMethod(testedValue = {Tester.TestStrategy.query,Tester.TestStrategy.clock,Tester.TestStrategy.processor}, indicesOfParameters = {})
     public static void printOne() {
         System.out.println("Hello World");
     }
@@ -19,7 +23,8 @@ public class DummyMain {
     }
 
     @TestMethod(testedValue = {Tester.TestStrategy.clock,Tester.TestStrategy.processor}, indicesOfParameters = {0,1})
-    private static void printSum(int a,int b) {
+    public static void printSum(int a,int b) {
         System.out.println(a+b);
     }
+
 }
