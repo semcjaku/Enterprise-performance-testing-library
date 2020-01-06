@@ -17,6 +17,7 @@ public class SQLConnectionTest {
         myConn = DriverManager.getConnection(url, user, password);
     }
 
+    @TestMethod(testedValue = {Tester.TestStrategy.query}, indicesOfParameters = {0})
     public void getCustomers () throws SQLException {
         Statement myStmt = myConn.createStatement();
         String sql = "SELECT * FROM classicmodels.customers;";
@@ -30,7 +31,11 @@ public class SQLConnectionTest {
     public static void main(String[] args) throws ClassNotFoundException, ParseException, SQLException {
 
         SQLConnectionTest connTest = new SQLConnectionTest();
+
+        Object[] params = {"sql"};
         connTest.getCustomers();
+        Tester tester = new Tester(connTest, params);
+        tester.performTest();
 //
 //        // get time of query execution
 //        String testSql = "SELECT query_time FROM mysql.slow_log WHERE sql_text LIKE '%" + testID + "%';";
