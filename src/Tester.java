@@ -18,13 +18,11 @@ public class Tester {
     protected List<String> testResults;
     protected Class classToTest;
     protected Object instanceOfClass;
-    protected Connection dbConnector;
 
     public Tester(Object userClass, Object[] methodsParameters) {
         //reset fields
         testResults = null;
         methodsToTest = new ArrayList<>();
-        dbConnector = null;
         testResults = null;
         try {
             classToTest = userClass.getClass();
@@ -42,6 +40,7 @@ public class Tester {
                     //for each element in array of strategies build wrapper and insert into methodsToTest
                     for(TestStrategy str : ((TestMethod)methodsAnnotations[i]).testedValue()) {
                         MethodTestWrapper wrap = new MethodTestWrapper();
+                        wrap.dbc = null;
                         wrap.m = classMethods[i];
                         wrap.strategy = str;
 
@@ -62,12 +61,10 @@ public class Tester {
         }
     }
 
-    public Tester(Object userClass, Object[] methodsParameters, Connection dbc) {
-        dbConnector = dbc;
+    public Tester(Object userClass, Object[] methodsParameters, Connection[] dbConnectors) {
         //reset fields
         testResults = null;
         methodsToTest = new ArrayList<>();
-        dbConnector = null;
         testResults = null;
         try {
             classToTest = userClass.getClass();
@@ -90,10 +87,12 @@ public class Tester {
                         wrap.strategy = str;
 
                         int[] paramIdx = ((TestMethod)methodsAnnotations[i]).indicesOfParameters();
+                        int connIdx = ((TestMethod)methodsAnnotations[i]).indexOfConnector();
                         wrap.parameters = new Object[paramIdx.length];
                         for(int p=0;p<paramIdx.length;p++) {
                             wrap.parameters[p] = methodsParameters[paramIdx[p]];
                         }
+                        wrap.dbc = dbConnectors[connIdx];
 
                         methodsToTest.add(wrap);
                     }
@@ -118,7 +117,7 @@ public class Tester {
                 testerList.add(new clockTimeTester(method.m,method.parameters,instanceOfClass));
             }
             else {
-                testerList.add(new queryTimeTester(method.m,method.parameters,dbConnector,instanceOfClass));
+                testerList.add(new queryTimeTester(method.m,method.parameters,method.dbc,instanceOfClass));
             }
         }
         //for each function tester do functiontester.runTest() and add functiontester.toString() to testResults

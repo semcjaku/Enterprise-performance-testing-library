@@ -9,4 +9,5 @@ import java.lang.annotation.Target;
 public @interface TestMethod {
     public Tester.TestStrategy[] testedValue();
     public int[] indicesOfParameters();
+    public int indexOfConnector();
 }
