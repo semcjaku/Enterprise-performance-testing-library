@@ -105,9 +105,7 @@ public class Tester {
         }
     }
 
-    public void performTest(){
-        //for each Method in methodsToTest create function tester corresponding to TestStrategy
-        testResults = new ArrayList<>();
+    private List<BaseTimeTester> generateTesters() {
         List<BaseTimeTester> testerList = new ArrayList<>();
         for(MethodTestWrapper method : methodsToTest) {
             if(method.strategy.equals(TestStrategy.processor)) {
@@ -120,6 +118,13 @@ public class Tester {
                 testerList.add(new queryTimeTester(method.m,method.parameters,method.dbc,instanceOfClass));
             }
         }
+        return testerList;
+    }
+
+    public void performTest(){
+        //for each Method in methodsToTest create function tester corresponding to TestStrategy
+        testResults = new ArrayList<>();
+        List<BaseTimeTester> testerList = this.generateTesters();
         //for each function tester do functiontester.runTest() and add functiontester.toString() to testResults
         for(BaseTimeTester tester : testerList){
             tester.runTest();
