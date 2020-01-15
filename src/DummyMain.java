@@ -12,7 +12,7 @@ public class DummyMain {
 
 
 
-    @TestMethod(testedValue = {Tester.TestStrategy.query,Tester.TestStrategy.clock,Tester.TestStrategy.processor}, indicesOfParameters = {})
+    @TestMethod(testedValue = {Tester.TestStrategy.query, Tester.TestStrategy.clock, Tester.TestStrategy.processor}, indicesOfParameters = {})
     public static void printOne() {
         System.out.println("Hello World");
     }

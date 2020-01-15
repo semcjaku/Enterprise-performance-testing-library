@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class SQLConnectionTest {
 
-    public Connection myConn;
+    public static Connection myConn;
 
     public SQLConnectionTest() throws SQLException {
         // prepare query connection
@@ -17,10 +17,10 @@ public class SQLConnectionTest {
         myConn = DriverManager.getConnection(url, user, password);
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.query}, indicesOfParameters = {0})
-    public void getCustomers () throws SQLException {
+    @TestMethod(testedValue = {Tester.TestStrategy.query}, indicesOfParameters = {0}, indexOfConnector = 0)
+    public void getCustomers (String testID) throws SQLException {
         Statement myStmt = myConn.createStatement();
-        String sql = "SELECT * FROM classicmodels.customers;";
+        String sql = "SELECT * FROM classicmodels.customers WHERE '" + testID + "' = '" + testID + "';";
 
         ResultSet rs = myStmt.executeQuery(sql);
         while (rs.next()) {
@@ -32,10 +32,16 @@ public class SQLConnectionTest {
 
         SQLConnectionTest connTest = new SQLConnectionTest();
 
-        Object[] params = {"sql"};
-        connTest.getCustomers();
-        Tester tester = new Tester(connTest, params);
+        String testID = UUID.randomUUID().toString();
+//        connTest.getCustomers(testID);
+
+        System.out.println(testID);
+
+        Object[] params = {testID};
+        Connection[] conn = {myConn};
+        Tester tester = new Tester(connTest, params,conn);
         tester.performTest();
+//        tester.showResults();
 //
 //        // get time of query execution
 //        String testSql = "SELECT query_time FROM mysql.slow_log WHERE sql_text LIKE '%" + testID + "%';";

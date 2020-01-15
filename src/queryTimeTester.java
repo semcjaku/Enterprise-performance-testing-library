@@ -17,7 +17,8 @@ public class queryTimeTester implements BaseTimeTester {
 
     @Override
     public void runTest() {
-        //execute test
+        System.out.println(methodToTest);
+        System.out.println(parameters);
     }
 
     @Override
