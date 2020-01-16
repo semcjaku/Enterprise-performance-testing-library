@@ -1,3 +1,6 @@
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
 public class Test3 {
@@ -21,7 +24,7 @@ public class Test3 {
         TimeUnit.SECONDS.sleep(3);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InvocationTargetException, SQLException, ParseException, IllegalAccessException {
 
         Test3 instance = new Test3();
 

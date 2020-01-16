@@ -1,3 +1,4 @@
+import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,39 +24,39 @@ public class SQLConnectionTest {
         String sql = "SELECT * FROM classicmodels.customers WHERE '" + testID + "' = '" + testID + "';";
 
         ResultSet rs = myStmt.executeQuery(sql);
+        String customerName = null;
         while (rs.next()) {
-            System.out.println(rs.getString("customerName"));
+            customerName = rs.getString("customerName");
         }
     }
 
-    public static void main(String[] args) throws ClassNotFoundException, ParseException, SQLException {
+    @TestMethod(testedValue = {Tester.TestStrategy.query}, indicesOfParameters = {1,2}, indexOfConnector = 0)
+    public String getCustomerByName(String testID, String customerName) throws SQLException {
+        Statement myStmt = myConn.createStatement();
+        String sql = "SELECT * FROM classicmodels.customers WHERE customerName = '" + customerName + ""
+                + "' AND '" + testID + "' = '" + testID + "';";
+
+        ResultSet rs = myStmt.executeQuery(sql);
+        String customerData = null;
+        while (rs.next()) {
+            customerData = "Customer: " + rs.getString("customerName") + ", "
+                    + "city: " + rs.getString("city");
+        }
+
+        return customerData;
+    }
+
+    public static void main(String[] args) throws ClassNotFoundException, ParseException, SQLException, InvocationTargetException, IllegalAccessException {
 
         SQLConnectionTest connTest = new SQLConnectionTest();
 
-        String testID = UUID.randomUUID().toString();
-//        connTest.getCustomers(testID);
-
-        System.out.println(testID);
-
-        Object[] params = {testID};
         Connection[] conn = {myConn};
-        Tester tester = new Tester(connTest, params,conn);
+        String testID_01 = UUID.randomUUID().toString();
+        String testID_02 = UUID.randomUUID().toString();
+
+        Object[] params = {testID_01, testID_02, "La Rochelle Gifts",};
+        Tester tester = new Tester(connTest, params, conn);
         tester.performTest();
 //        tester.showResults();
-//
-//        // get time of query execution
-//        String testSql = "SELECT query_time FROM mysql.slow_log WHERE sql_text LIKE '%" + testID + "%';";
-//        rs = myStmt.executeQuery(testSql);
-//
-//        String queryExecutionTime = null;
-//        while (rs.next()) {
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-//            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-//
-//            // convert query time to milliseconds
-//            queryExecutionTime = rs.getString("query_time");
-//            Date date = sdf.parse("1970-01-01 " + queryExecutionTime);
-//            System.out.println("In milliseconds: " + date.getTime());
-//        }
     }
 }

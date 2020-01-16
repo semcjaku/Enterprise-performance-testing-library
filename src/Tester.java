@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -8,6 +9,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +27,7 @@ public class Tester {
         testResults = null;
         methodsToTest = new ArrayList<>();
         testResults = null;
+
         try {
             classToTest = userClass.getClass();
             instanceOfClass = userClass;
@@ -121,7 +125,7 @@ public class Tester {
         return testerList;
     }
 
-    public void performTest(){
+    public void performTest() throws SQLException, IllegalAccessException, ParseException, InvocationTargetException {
         //for each Method in methodsToTest create function tester corresponding to TestStrategy
         testResults = new ArrayList<>();
         List<BaseTimeTester> testerList = this.generateTesters();

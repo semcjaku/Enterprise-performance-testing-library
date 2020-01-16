@@ -1,3 +1,6 @@
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
 import java.util.concurrent.TimeUnit;
@@ -11,7 +14,7 @@ public class Test2 {
     }
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, InvocationTargetException, SQLException, ParseException, IllegalAccessException {
 
         Test2 instance = new Test2();
 

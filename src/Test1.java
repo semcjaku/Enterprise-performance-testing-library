@@ -1,3 +1,6 @@
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.time.Clock;
 import java.time.Instant;
 
@@ -18,7 +21,7 @@ public class Test1 {
         return a*b;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InvocationTargetException, SQLException, ParseException, IllegalAccessException {
         int a=2;
         int b=4;
         Test1 instance = new Test1(a,b);

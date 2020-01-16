@@ -1,5 +1,9 @@
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.text.ParseException;
+
 public class DummyMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvocationTargetException, SQLException, ParseException, IllegalAccessException {
         DummyMain instance = new DummyMain();
         Object[] params = {1,2};
         Tester testthis = new Tester(instance,params);
