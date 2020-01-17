@@ -24,7 +24,6 @@ public class processorTimeTester implements BaseTimeTester {
 
             time_nanos = searchTime;
             time_milis = searchTime1;
-            //System.out.println(time_milis);
         }
         catch (Throwable e){
             System.err.println(e.getMessage());

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="475957e5-43f4-4cbe-9396-6f9ea3a629ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Enterprise-performance-testing-library/DummyMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DummyMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DummyMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/clockTimeTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/clockTimeTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/processorTimeTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/processorTimeTester.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1UexR1vmNO1epJXDIMx0arBL9Qe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DummyMain">
+    <configuration name="DummyMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DummyMain" />
+      <module name="Enterprise-performance-testing-library" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testingofprocessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="testingofprocessor" />
+      <module name="Enterprise-performance-testing-library" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DummyMain" />
+        <item itemvalue="Application.testingofprocessor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="475957e5-43f4-4cbe-9396-6f9ea3a629ae" name="Default Changelist" comment="" />
+      <created>1575730850794</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575730850794</updated>
+      <workItem from="1575730857970" duration="4189000" />
+      <workItem from="1575973300085" duration="17749000" />
+      <workItem from="1576003300307" duration="216000" />
+      <workItem from="1576247210499" duration="3942000" />
+      <workItem from="1576254114692" duration="393000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="729" y="219" key="#com.intellij.ide.util.MemberChooser" timestamp="1575993746154">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="729" y="219" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1575993746154" />
+    <state x="690" y="294" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1575983476992">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="294" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575983476992" />
+    <state width="1877" height="444" key="GridCell.Tab.0.bottom" timestamp="1576517112280">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1576342304209" />
+    <state width="1877" height="444" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576517112280" />
+    <state width="1877" height="444" key="GridCell.Tab.0.center" timestamp="1576517112280">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1576342304208" />
+    <state width="1877" height="444" key="GridCell.Tab.0.center/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576517112280" />
+    <state width="1877" height="444" key="GridCell.Tab.0.left" timestamp="1576517112280">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1576342304207" />
+    <state width="1877" height="444" key="GridCell.Tab.0.left/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576517112280" />
+    <state width="1877" height="444" key="GridCell.Tab.0.right" timestamp="1576517112280">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1576342304209" />
+    <state width="1877" height="444" key="GridCell.Tab.0.right/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576517112280" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1576002803394">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1576002803394" />
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1579283920000">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="529" y="272" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1576320913256" />
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1280.54.1280.984@0.0.1920.1040" timestamp="1579283920000" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="testResults" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
