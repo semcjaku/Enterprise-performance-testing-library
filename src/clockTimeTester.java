@@ -84,7 +84,7 @@ public class clockTimeTester implements BaseTimeTester {
            //System.out.println(in + out);
        }
         catch (Throwable e){
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
     }
 

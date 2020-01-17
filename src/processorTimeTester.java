@@ -27,7 +27,7 @@ public class processorTimeTester implements BaseTimeTester {
             //System.out.println(time_milis);
         }
         catch (Throwable e){
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
     }
 
