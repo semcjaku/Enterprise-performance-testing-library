@@ -48,6 +48,43 @@ public class SQLConnectionTest {
         return customerData;
     }
 
+    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {3,4}, indexOfConnector = 0)
+    public String getCustomersByName(String testID, String[] customersNames) throws SQLException {
+        Statement myStmt = myConn.createStatement();
+
+        String sql = "";
+        String customerData = new String();
+        ResultSet rs;
+        for (String customerName : customersNames) {
+            sql = "SELECT * FROM classicmodels.customers WHERE customerName = '" + customerName + ""
+                    + "' AND '" + testID + "' = '" + testID + "';";
+            rs = myStmt.executeQuery(sql);
+
+            while (rs.next()) {
+                customerData = "Customer: " + rs.getString("customerName") + ", "
+                        + "city: " + rs.getString("city");
+            }
+        }
+
+        return customerData;
+    }
+
+    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {5, 6, 7, 8, 9, 10, 11, 12},
+            indexOfConnector = 0)
+    public void addCustomer(String testID, String address, String city, String contactFirstName,
+                            String contactLastName, String country, String customerName,
+                            String phone) throws SQLException {
+
+        Statement myStmt = myConn.createStatement();
+        String sql = "INSERT INTO classicmodels.customers(customerNumber, customerName, contactLastName, " +
+                "contactFirstName, phone, addressLine1, city, country) " +
+                "SELECT (SELECT MAX(customerNumber)+1 FROM classicmodels.customers), '" + customerName + "', '" +
+                contactLastName + "', '" + contactFirstName + "', '" + phone + "', '" + address + "', '" + city + "', '"
+                + country + "' WHERE '" + testID + "' = '" + testID + "';";
+
+        myStmt.executeUpdate(sql);
+    }
+
     public static void main(String[] args) throws ClassNotFoundException, ParseException, SQLException, InvocationTargetException, IllegalAccessException {
 
         SQLConnectionTest connTest = new SQLConnectionTest();
@@ -55,10 +92,14 @@ public class SQLConnectionTest {
         Connection[] conn = {myConn};
         String testID_01 = UUID.randomUUID().toString();
         String testID_02 = UUID.randomUUID().toString();
+        String testID_03 = UUID.randomUUID().toString();
+        String[] customersNames = {"La Rochelle Gifts", "Signal Gift Stores"};
+        String testID_04 = UUID.randomUUID().toString();
 
-        Object[] params = {testID_01, testID_02, "La Rochelle Gifts",};
+        Object[] params = {testID_01, testID_02, "La Rochelle Gifts", testID_03, customersNames,
+        testID_04, "Somewhere", "Cracow", "FirstName", "Last Name", "Poland", "AGH", "123456789"};
         Tester tester = new Tester(connTest, params, conn);
         tester.performTest();
-//        tester.showResults();
+        tester.showResults();
     }
 }
