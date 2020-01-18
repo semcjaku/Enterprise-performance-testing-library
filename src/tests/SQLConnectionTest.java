@@ -1,9 +1,11 @@
+package tests;
+
+import testing_library.TestMethod;
+import testing_library.Tester;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
 import java.util.UUID;
 
 public class SQLConnectionTest {
@@ -18,7 +20,7 @@ public class SQLConnectionTest {
         myConn = DriverManager.getConnection(url, user, password);
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.query}, indicesOfParameters = {0}, indexOfConnector = 0)
+    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {0}, indexOfConnector = 0)
     public void getCustomers (String testID) throws SQLException {
         Statement myStmt = myConn.createStatement();
         String sql = "SELECT * FROM classicmodels.customers WHERE '" + testID + "' = '" + testID + "';";
@@ -30,7 +32,7 @@ public class SQLConnectionTest {
         }
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.query}, indicesOfParameters = {1,2}, indexOfConnector = 0)
+    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {1,2}, indexOfConnector = 0)
     public String getCustomerByName(String testID, String customerName) throws SQLException {
         Statement myStmt = myConn.createStatement();
         String sql = "SELECT * FROM classicmodels.customers WHERE customerName = '" + customerName + ""

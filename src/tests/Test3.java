@@ -1,3 +1,8 @@
+package tests;
+
+import testing_library.TestMethod;
+import testing_library.Tester;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -6,19 +11,19 @@ import java.util.concurrent.TimeUnit;
 public class Test3 {
 
     public Test3(){}
-    @TestMethod(testedValue = {Tester.TestStrategy.clock}, indicesOfParameters = {})
+    @TestMethod(testedValue = {Tester.TestStrategy.CLOCK}, indicesOfParameters = {})
     public void PublicMethod() throws InterruptedException {
         System.out.println("I'm in the public method");
         TimeUnit.SECONDS.sleep(1);
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.clock}, indicesOfParameters = {})
+    @TestMethod(testedValue = {Tester.TestStrategy.CLOCK}, indicesOfParameters = {})
     private void PrivateMethod()  throws InterruptedException{
         System.out.println("I'm in the protected method");
         TimeUnit.SECONDS.sleep(2);
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.clock}, indicesOfParameters = {})
+    @TestMethod(testedValue = {Tester.TestStrategy.CLOCK}, indicesOfParameters = {})
     protected void ProtectedMethod()  throws InterruptedException{
         System.out.println("I'm in the private method");
         TimeUnit.SECONDS.sleep(3);

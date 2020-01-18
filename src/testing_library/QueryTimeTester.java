@@ -1,3 +1,11 @@
+///////////////////////////////////////////////////////////////////////////////
+// Title:            Enterprise Performance Testing Library
+// Authors:          Jakub Semczyszyn, Piotr Walat, Daniel Rubak, Jan Zasadny
+// License:          BSD; for more info see README.md file
+///////////////////////////////////////////////////////////////////////////////
+
+package testing_library;
+
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -5,14 +13,14 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class queryTimeTester implements BaseTimeTester {
+public class QueryTimeTester implements BaseTimeTester {
     private Connection dbConnector;
     private HashMap<String,Long> queryTimes;
     private Method methodToTest;
     private Object[] parameters;
     private Object instanceofObject;
 
-    protected queryTimeTester(Method m,Object[] p, Connection dbCon, Object obj){
+    protected QueryTimeTester(final Method m, final Object[] p, final Connection dbCon, final Object obj){
         methodToTest = m;
         dbConnector = dbCon;
         parameters = p;
@@ -50,7 +58,7 @@ public class queryTimeTester implements BaseTimeTester {
 
     @Override
     public String toString() {
-        return "queryTimeTester{" + "queryTimes=" + queryTimes.toString() + " for method " + methodToTest + '}';
+        return "TestingLibrary.queryTimeTester{" + "queryTimes=" + queryTimes.toString() + " for method " + methodToTest + '}';
     }
 }
 

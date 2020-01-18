@@ -1,3 +1,8 @@
+package tests;
+
+import testing_library.TestMethod;
+import testing_library.Tester;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -15,7 +20,7 @@ public class DummyMain {
     }
 
 
-    @TestMethod(testedValue = {Tester.TestStrategy.query, Tester.TestStrategy.clock, Tester.TestStrategy.processor}, indicesOfParameters = {})
+    @TestMethod(testedValue = {Tester.TestStrategy.QUERY, Tester.TestStrategy.CLOCK, Tester.TestStrategy.PROCESSOR}, indicesOfParameters = {})
     private static void printOne() {
         System.out.println("Hello World");
     }
@@ -25,7 +30,7 @@ public class DummyMain {
         printOne();
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.clock,Tester.TestStrategy.processor}, indicesOfParameters = {0,1})
+    @TestMethod(testedValue = {Tester.TestStrategy.CLOCK,Tester.TestStrategy.PROCESSOR}, indicesOfParameters = {0,1})
     public static void printSum(int a,int b) {
         System.out.println(a+b);
     }

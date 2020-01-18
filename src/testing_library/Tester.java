@@ -1,3 +1,11 @@
+///////////////////////////////////////////////////////////////////////////////
+// Title:            Enterprise Performance Testing Library
+// Authors:          Jakub Semczyszyn, Piotr Walat, Daniel Rubak, Jan Zasadny
+// License:          BSD; for more info see README.md file
+///////////////////////////////////////////////////////////////////////////////
+
+package testing_library;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -14,14 +22,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tester {
-    public enum TestStrategy{processor,clock,query}
+    public enum TestStrategy{PROCESSOR, CLOCK, QUERY}
 
     protected List<MethodTestWrapper> methodsToTest;
     protected List<String> testResults;
     protected Class classToTest;
     protected Object instanceOfClass;
 
-    public Tester(Object userClass, Object[] methodsParameters) {
+    public Tester(final Object userClass, final Object[] methodsParameters) {
         //reset fields
         testResults = null;
         methodsToTest = new ArrayList<>();
@@ -60,11 +68,10 @@ public class Tester {
         }
         catch(Throwable e) {
             System.err.println(e.getMessage());
-            e.getStackTrace();
         }
     }
 
-    public Tester(Object userClass, Object[] methodsParameters, Connection[] dbConnectors) {
+    public Tester(final Object userClass, final Object[] methodsParameters, final Connection[] dbConnectors) {
         //reset fields
         testResults = null;
         methodsToTest = new ArrayList<>();
@@ -104,21 +111,20 @@ public class Tester {
         }
         catch(Throwable e) {
             System.err.println(e.getMessage());
-            e.getStackTrace();
         }
     }
 
     private List<BaseTimeTester> generateTesters() {
         List<BaseTimeTester> testerList = new ArrayList<>();
         for(MethodTestWrapper method : methodsToTest) {
-            if(method.strategy.equals(TestStrategy.processor)) {
-                testerList.add(new processorTimeTester(method.m,method.parameters,instanceOfClass));
+            if(method.strategy.equals(TestStrategy.PROCESSOR)) {
+                testerList.add(new ProcessorTimeTester(method.m,method.parameters,instanceOfClass));
             }
-            else if (method.strategy.equals(TestStrategy.clock)) {
-                testerList.add(new clockTimeTester(method.m,method.parameters,instanceOfClass));
+            else if (method.strategy.equals(TestStrategy.CLOCK)) {
+                testerList.add(new ClockTimeTester(method.m,method.parameters,instanceOfClass));
             }
             else {
-                testerList.add(new queryTimeTester(method.m,method.parameters,method.dbc,instanceOfClass));
+                testerList.add(new QueryTimeTester(method.m,method.parameters,method.dbc,instanceOfClass));
             }
         }
         return testerList;
@@ -142,18 +148,18 @@ public class Tester {
         }
     }
 
-    public void saveResults(String path){
+    public void saveResults(final String path){
         //write testResults into file specified with path
         File file = new File(path);
         Path filepath = file.toPath();
         try  {
-            if(!file.exists())
+            if(!file.exists()) {
                 file.createNewFile();
+            }
             Files.write(filepath, testResults, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
         }
         catch (IOException e) {
             System.err.println(e.getMessage());
-            e.getStackTrace();
         }
 
     }
