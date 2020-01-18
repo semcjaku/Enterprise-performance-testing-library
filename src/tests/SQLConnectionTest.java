@@ -85,6 +85,16 @@ public class SQLConnectionTest {
         myStmt.executeUpdate(sql);
     }
 
+    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {13, 14,15},
+            indexOfConnector = 0)
+    public void updateCustomerName (String testID, String prevCustomerName, String newCustomerName) throws SQLException {
+        Statement myStmt = myConn.createStatement();
+        String sql = "UPDATE classicmodels.customers SET customerName = '" + newCustomerName + "' WHERE customerName = '" +
+                prevCustomerName + "' AND '" + testID + "' = '" + testID + "';";
+
+        myStmt.executeUpdate(sql);
+    }
+
     public static void main(String[] args) throws ClassNotFoundException, ParseException, SQLException, InvocationTargetException, IllegalAccessException {
 
         SQLConnectionTest connTest = new SQLConnectionTest();
@@ -95,9 +105,12 @@ public class SQLConnectionTest {
         String testID_03 = UUID.randomUUID().toString();
         String[] customersNames = {"La Rochelle Gifts", "Signal Gift Stores"};
         String testID_04 = UUID.randomUUID().toString();
+        String testID_05 = UUID.randomUUID().toString();
 
         Object[] params = {testID_01, testID_02, "La Rochelle Gifts", testID_03, customersNames,
-        testID_04, "Somewhere", "Cracow", "FirstName", "Last Name", "Poland", "AGH", "123456789"};
+                testID_04, "Somewhere", "Cracow", "FirstName", "Last Name", "Poland", "AGH", "123456789",
+                testID_05, "PrevName", "CurrName"};
+
         Tester tester = new Tester(connTest, params, conn);
         tester.performTest();
         tester.showResults();
