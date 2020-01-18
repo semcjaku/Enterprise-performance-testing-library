@@ -36,7 +36,7 @@ public class QueryTimeTester implements BaseTimeTester {
 
             Statement myStmt = dbConnector.createStatement();
             // get time of query execution
-            String testSql = "SELECT query_time FROM mysql.slow_log WHERE sql_text LIKE '%" + parameters[0] + "%';";
+            String testSql = "SELECT sql_text, query_time FROM mysql.slow_log WHERE sql_text LIKE '%" + parameters[0] + "%';";
             ResultSet rs = myStmt.executeQuery(testSql);
 
             String queryExecutionTime, queryText;
@@ -58,7 +58,14 @@ public class QueryTimeTester implements BaseTimeTester {
 
     @Override
     public String toString() {
-        return "TestingLibrary.queryTimeTester{" + "queryTimes=" + queryTimes.toString() + " for method " + methodToTest + '}';
+        String testResult = "";
+        for (Map.Entry me : queryTimes.entrySet()) {
+            testResult += "TestingLibrary.queryTimeTester{Method: " + methodToTest.getName() + ", ";
+            testResult += "Query: \"" + me.getKey() + "\", ";
+            testResult += "Execution time: " + me.getValue() + "}\n";
+        }
+
+        return testResult;
     }
 }
 
