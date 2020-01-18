@@ -15,14 +15,8 @@ public class DummyMain {
     }
 
 
-
-<<<<<<< Updated upstream
     @TestMethod(testedValue = {Tester.TestStrategy.query, Tester.TestStrategy.clock, Tester.TestStrategy.processor}, indicesOfParameters = {})
-    public static void printOne() {
-=======
-    @TestMethod(testedValue = {Tester.TestStrategy.query,Tester.TestStrategy.clock,Tester.TestStrategy.processor}, indicesOfParameters = {})
     private static void printOne() {
->>>>>>> Stashed changes
         System.out.println("Hello World");
     }
 

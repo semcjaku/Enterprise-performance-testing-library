@@ -29,10 +29,8 @@ public class clockTimeTester implements BaseTimeTester {
            Instant instantfinish = baseclock.instant();
 
            String in = instantstart.toString();
-           String out = instantfinish.toString();
 
            String[] in_fragmented = in.split("\\.", 2);
-           String[] out_fragmented = out.split("\\.", 2);
            String[] in_fragmented2 = in_fragmented[0].split("\\-", 4);
            String[] in_fragmented3 = in_fragmented2[2].split("\\:", 4);
            String[] in_fragmented4 = in_fragmented3[0].split("T", 2);
