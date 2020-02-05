@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class QueryTimeTester implements BaseTimeTester {
     private Connection dbConnector;
@@ -44,28 +46,33 @@ public class QueryTimeTester implements BaseTimeTester {
         try {
             methodToTest.trySetAccessible();
 
-            System.out.println(System.nanoTime() + ", " + new Timestamp(System.nanoTime()) + ", " + System.currentTimeMillis());
+            Statement myStmt = dbConnector.createStatement();
+            String getLastLogTimeQuery = "SELECT start_time FROM mysql.slow_log ORDER BY start_time DESC LIMIT 1;";
+            ResultSet rs = myStmt.executeQuery(getLastLogTimeQuery);
 
+            String invoke_start = "";
+            while (rs.next()) {
+                invoke_start = rs.getString("start_time");
+            }
 
-
-            Timestamp invoke_start = new Timestamp(System.currentTimeMillis());
             methodToTest.invoke(instanceofObject, parameters);
             Timestamp invoke_end = new Timestamp(System.currentTimeMillis());
 
-            Statement myStmt = dbConnector.createStatement();
             // get time of query execution
             String testSql = "SELECT start_time, sql_text, query_time FROM mysql.slow_log WHERE user_host LIKE '%" +
-                    user + "%' AND start_time BETWEEN '" + invoke_start.toString() + "' AND '" +
-                    invoke_end.toString() + "';";
-            ResultSet rs = myStmt.executeQuery(testSql);
+                    user + "%' AND start_time >= '" + invoke_start + "';";
+            rs = myStmt.executeQuery(testSql);
 
             String queryExecutionTime, queryText;
+            Pattern logTablePattern = Pattern.compile(".*slow_log.*", Pattern.CASE_INSENSITIVE);
+            Pattern setPattern = Pattern.compile(".*autocommit.*", Pattern.CASE_INSENSITIVE);
             while (rs.next()) {
+                queryText = rs.getString("sql_text");
+                if (logTablePattern.matcher(queryText).matches() || setPattern.matcher(queryText).matches() )
+                    continue;
+
                 queryExecutionTime = rs.getString("query_time");
                 String startTime = rs.getString("start_time");
-                queryText = rs.getString("sql_text");
-                System.out.println("Invoke start: " + invoke_start + ", invoke end: " + invoke_end +
-                        ", query start time: " + startTime + ", query: " + queryText);
                 queryTimes.put(queryText,queryExecutionTime);
             }
 
