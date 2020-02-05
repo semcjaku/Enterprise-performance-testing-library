@@ -1,5 +1,20 @@
 # Enterprise-performance-testing-library
 
+## How to enable slow query log in MySQL
+
+Run MySQL Command Line and execute following commands:
+1. SET GLOBAL general_log = 'ON';
+2. SET GLOBAL slow_query_log = 'ON';
+3. SET GLOBAL long_query_time = 0;
+4. SET GLOBAL log_output = 'TABLE';
+
+To verify if logs are enabled just execute some random queries and finally run:
+```
+SELECT * FROM mysql.slow_log
+```
+
+## License
+
 All included clases are created under BSD license:
 Copyright 2020 Jakub Semczyszyn, Piotr Walat, Daniel Rubak, Jan Zasadny
 
