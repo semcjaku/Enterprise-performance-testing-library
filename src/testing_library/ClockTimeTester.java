@@ -49,7 +49,7 @@ public class ClockTimeTester implements BaseTimeTester {
            result = result.minus(Long.parseLong(nanos[0]), ChronoUnit.NANOS);
 
            String stringresult = result.toString();
-           stringresult = stringresult.substring(11);
+           stringresult = stringresult.substring(11,stringresult.length()-1);
            ticks = stringresult;
 
        }

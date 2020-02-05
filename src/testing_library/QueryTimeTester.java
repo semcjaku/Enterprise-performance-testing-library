@@ -10,20 +10,31 @@ import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class QueryTimeTester implements BaseTimeTester {
     private Connection dbConnector;
-    private HashMap<String,Long> queryTimes;
+    private HashMap<String,String> queryTimes;
     private Method methodToTest;
     private Object[] parameters;
     private Object instanceofObject;
+    private String user;
 
     protected QueryTimeTester(final Method m, final Object[] p, final Connection dbCon, final Object obj){
         methodToTest = m;
         dbConnector = dbCon;
-        parameters = p;
+
+        user = (String) p[0];
+        if(p.length > 1)
+        {
+            Object[] tempArray = new Object[p.length - 1];
+            for(int i=1;i<p.length;i++)
+                tempArray[i-1] = p[i];
+            parameters = tempArray;
+        }
+
         instanceofObject = obj;
         queryTimes = new HashMap<>();
     }
@@ -32,25 +43,32 @@ public class QueryTimeTester implements BaseTimeTester {
     public void runTest() {
         try {
             methodToTest.trySetAccessible();
+
+            System.out.println(System.nanoTime() + ", " + new Timestamp(System.nanoTime()) + ", " + System.currentTimeMillis());
+
+
+
+            Timestamp invoke_start = new Timestamp(System.currentTimeMillis());
             methodToTest.invoke(instanceofObject, parameters);
+            Timestamp invoke_end = new Timestamp(System.currentTimeMillis());
 
             Statement myStmt = dbConnector.createStatement();
             // get time of query execution
-            String testSql = "SELECT sql_text, query_time FROM mysql.slow_log WHERE sql_text LIKE '%" + parameters[0] + "%';";
+            String testSql = "SELECT start_time, sql_text, query_time FROM mysql.slow_log WHERE user_host LIKE '%" +
+                    user + "%' AND start_time BETWEEN '" + invoke_start.toString() + "' AND '" +
+                    invoke_end.toString() + "';";
             ResultSet rs = myStmt.executeQuery(testSql);
 
             String queryExecutionTime, queryText;
             while (rs.next()) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-                sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-                // convert query time to milliseconds
                 queryExecutionTime = rs.getString("query_time");
+                String startTime = rs.getString("start_time");
                 queryText = rs.getString("sql_text");
-                Date date = sdf.parse("1970-01-01 " + queryExecutionTime);
-
-                queryTimes.put(queryText,date.getTime());
+                System.out.println("Invoke start: " + invoke_start + ", invoke end: " + invoke_end +
+                        ", query start time: " + startTime + ", query: " + queryText);
+                queryTimes.put(queryText,queryExecutionTime);
             }
+
         } catch (Throwable e) {
             System.err.println(e.getMessage());
         }

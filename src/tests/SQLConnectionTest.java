@@ -21,9 +21,9 @@ public class SQLConnectionTest {
     }
 
     @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {0}, indexOfConnector = 0)
-    public void getCustomers (String testID) throws SQLException {
+    public void getCustomers () throws SQLException {
         Statement myStmt = myConn.createStatement();
-        String sql = "SELECT * FROM classicmodels.customers WHERE '" + testID + "' = '" + testID + "';";
+        String sql = "SELECT * FROM classicmodels.customers;";
 
         ResultSet rs = myStmt.executeQuery(sql);
         String customerName = null;
@@ -32,11 +32,10 @@ public class SQLConnectionTest {
         }
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {1,2}, indexOfConnector = 0)
-    public String getCustomerByName(String testID, String customerName) throws SQLException {
+    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {0, 1}, indexOfConnector = 0)
+    public String getCustomerByName(String customerName) throws SQLException {
         Statement myStmt = myConn.createStatement();
-        String sql = "SELECT * FROM classicmodels.customers WHERE customerName = '" + customerName + ""
-                + "' AND '" + testID + "' = '" + testID + "';";
+        String sql = "SELECT * FROM classicmodels.customers WHERE customerName = '" + customerName + "';";
 
         ResultSet rs = myStmt.executeQuery(sql);
         String customerData = null;
@@ -48,16 +47,15 @@ public class SQLConnectionTest {
         return customerData;
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {3,4}, indexOfConnector = 0)
-    public String getCustomersByName(String testID, String[] customersNames) throws SQLException {
+    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {0, 2}, indexOfConnector = 0)
+    public String getCustomersByName(String[] customersNames) throws SQLException {
         Statement myStmt = myConn.createStatement();
 
         String sql = "";
         String customerData = new String();
         ResultSet rs;
         for (String customerName : customersNames) {
-            sql = "SELECT * FROM classicmodels.customers WHERE customerName = '" + customerName + ""
-                    + "' AND '" + testID + "' = '" + testID + "';";
+            sql = "SELECT * FROM classicmodels.customers WHERE customerName = '" + customerName + "';";
             rs = myStmt.executeQuery(sql);
 
             while (rs.next()) {
@@ -69,9 +67,9 @@ public class SQLConnectionTest {
         return customerData;
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {5, 6, 7, 8, 9, 10, 11, 12},
+    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {0, 3, 4, 5, 6, 7, 8, 9},
             indexOfConnector = 0)
-    public void addCustomer(String testID, String address, String city, String contactFirstName,
+    public void addCustomer(String address, String city, String contactFirstName,
                             String contactLastName, String country, String customerName,
                             String phone) throws SQLException {
 
@@ -80,17 +78,17 @@ public class SQLConnectionTest {
                 "contactFirstName, phone, addressLine1, city, country) " +
                 "SELECT (SELECT MAX(customerNumber)+1 FROM classicmodels.customers), '" + customerName + "', '" +
                 contactLastName + "', '" + contactFirstName + "', '" + phone + "', '" + address + "', '" + city + "', '"
-                + country + "' WHERE '" + testID + "' = '" + testID + "';";
+                + country + "';";
 
         myStmt.executeUpdate(sql);
     }
 
-    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {13, 14,15},
+    @TestMethod(testedValue = {Tester.TestStrategy.QUERY}, indicesOfParameters = {0, 10, 11},
             indexOfConnector = 0)
-    public void updateCustomerName (String testID, String prevCustomerName, String newCustomerName) throws SQLException {
+    public void updateCustomerName (String prevCustomerName, String newCustomerName) throws SQLException {
         Statement myStmt = myConn.createStatement();
         String sql = "UPDATE classicmodels.customers SET customerName = '" + newCustomerName + "' WHERE customerName = '" +
-                prevCustomerName + "' AND '" + testID + "' = '" + testID + "';";
+                prevCustomerName + "';";
 
         myStmt.executeUpdate(sql);
     }
@@ -100,16 +98,10 @@ public class SQLConnectionTest {
         SQLConnectionTest connTest = new SQLConnectionTest();
 
         Connection[] conn = {myConn};
-        String testID_01 = UUID.randomUUID().toString();
-        String testID_02 = UUID.randomUUID().toString();
-        String testID_03 = UUID.randomUUID().toString();
         String[] customersNames = {"La Rochelle Gifts", "Signal Gift Stores"};
-        String testID_04 = UUID.randomUUID().toString();
-        String testID_05 = UUID.randomUUID().toString();
 
-        Object[] params = {testID_01, testID_02, "La Rochelle Gifts", testID_03, customersNames,
-                testID_04, "Somewhere", "Cracow", "FirstName", "Last Name", "Poland", "AGH", "123456789",
-                testID_05, "PrevName", "CurrName"};
+        Object[] params = {"admin", "La Rochelle Gifts", customersNames, "Somewhere", "Cracow", "FirstName",
+                "Last Name", "Poland", "AGH", "123456789", "PrevName", "CurrName"};
 
         Tester tester = new Tester(connTest, params, conn);
         tester.performTest();
