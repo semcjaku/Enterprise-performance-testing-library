@@ -25,13 +25,15 @@ public class ProcessorTimeTester implements BaseTimeTester {
         try{
             methodToTest.trySetAccessible();
             long startTime = System.nanoTime();
+            methodToTest.invoke(instanceofObject, parameters);
+            long searchTime = System.nanoTime();
+
             long startTime1 = System.currentTimeMillis();
             methodToTest.invoke(instanceofObject, parameters);
-            long searchTime = System.nanoTime()-startTime;
-            long searchTime1 = System.currentTimeMillis()-startTime1;
+            long searchTime1 = System.currentTimeMillis();
 
-            timeNanos = searchTime;
-            timeMilis = searchTime1;
+            timeNanos = searchTime-startTime;
+            timeMilis = searchTime1-startTime1;
         }
         catch (Throwable e){
             System.err.println(e.getMessage());

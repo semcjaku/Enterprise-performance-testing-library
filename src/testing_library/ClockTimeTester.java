@@ -46,12 +46,18 @@ public class ClockTimeTester implements BaseTimeTester {
            result = result.minus(Long.parseLong(inFragmented4[1]), ChronoUnit.HOURS);
            result = result.minus(Long.parseLong(inFragmented3[1]), ChronoUnit.MINUTES);
            result = result.minus(Long.parseLong(inFragmented3[2]), ChronoUnit.SECONDS);
+           Integer finishNanos = result.getNano();
+           String strFinishNanos = finishNanos.toString();
+           int diff = strFinishNanos.length() - nanos[0].length();
+           if(diff > 0) {
+               for(int i=0;i<diff;i++)
+                   nanos[0] += "0";
+           }
            result = result.minus(Long.parseLong(nanos[0]), ChronoUnit.NANOS);
 
            String stringresult = result.toString();
            stringresult = stringresult.substring(11,stringresult.length()-1);
            ticks = stringresult;
-
        }
         catch (Throwable e){
             System.err.println(e.getMessage());
