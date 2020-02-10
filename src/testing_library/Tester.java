@@ -50,6 +50,10 @@ public class Tester {
                 if(methodsAnnotations[i] instanceof TestMethod) {
                     //for each element in array of strategies build wrapper and insert into methodsToTest
                     for(TestStrategy str : ((TestMethod)methodsAnnotations[i]).testedValue()) {
+                        if(str == TestStrategy.QUERY)
+                        {
+                            throw new IllegalArgumentException("Connection to database not provided");
+                        }
                         MethodTestWrapper wrap = new MethodTestWrapper();
                         wrap.dbc = null;
                         wrap.m = classMethods[i];
@@ -93,16 +97,20 @@ public class Tester {
                     //for each element in array of strategies build wrapper and insert into methodsToTest
                     for(TestStrategy str : ((TestMethod)methodsAnnotations[i]).testedValue()) {
                         MethodTestWrapper wrap = new MethodTestWrapper();
+                        if(str == TestStrategy.QUERY)
+                        {
+                            int connIdx = ((TestMethod)methodsAnnotations[i]).indexOfConnector();
+                            wrap.dbc = dbConnectors[connIdx];
+                            wrap.user = ((TestMethod)methodsAnnotations[i]).dbUser();
+                        }
                         wrap.m = classMethods[i];
                         wrap.strategy = str;
 
                         int[] paramIdx = ((TestMethod)methodsAnnotations[i]).indicesOfParameters();
-                        int connIdx = ((TestMethod)methodsAnnotations[i]).indexOfConnector();
                         wrap.parameters = new Object[paramIdx.length];
                         for(int p=0;p<paramIdx.length;p++) {
                             wrap.parameters[p] = methodsParameters[paramIdx[p]];
                         }
-                        wrap.dbc = dbConnectors[connIdx];
 
                         methodsToTest.add(wrap);
                     }
@@ -124,7 +132,7 @@ public class Tester {
                 testerList.add(new ClockTimeTester(method.m,method.parameters,instanceOfClass));
             }
             else {
-                testerList.add(new QueryTimeTester(method.m,method.parameters,method.dbc,instanceOfClass));
+                testerList.add(new QueryTimeTester(method.m,method.parameters,method.dbc,method.user,instanceOfClass));
             }
         }
         return testerList;

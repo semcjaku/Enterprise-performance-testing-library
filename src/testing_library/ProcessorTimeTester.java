@@ -40,7 +40,7 @@ public class ProcessorTimeTester implements BaseTimeTester {
 
     @Override
     public String toString() {
-        return "TestingLibrary.processorTimeTester{" + "\ntime = " + timeNanos + " nanoseconds (non thread safe)" + "\n"
-                + " time = " + timeMilis + " miliseconds (thread safe) \n for method *" + methodToTest + "*}\n";
+        return "TestingLibrary.processorTimeTester{Method: " + methodToTest.getName() + ", Execution time:\n" + timeNanos + " nanoseconds (non thread safe)" + "\n"
+                + timeMilis + " miliseconds (thread safe)}\n";
     }
 }

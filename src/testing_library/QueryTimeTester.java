@@ -24,19 +24,11 @@ public class QueryTimeTester implements BaseTimeTester {
     private Object instanceofObject;
     private String user;
 
-    protected QueryTimeTester(final Method m, final Object[] p, final Connection dbCon, final Object obj){
+    protected QueryTimeTester(final Method m, final Object[] p, final Connection dbCon, final String username, final Object obj){
         methodToTest = m;
         dbConnector = dbCon;
-
-        user = (String) p[0];
-        if(p.length > 1)
-        {
-            Object[] tempArray = new Object[p.length - 1];
-            for(int i=1;i<p.length;i++)
-                tempArray[i-1] = p[i];
-            parameters = tempArray;
-        }
-
+        user = username;
+        parameters = p;
         instanceofObject = obj;
         queryTimes = new HashMap<>();
     }
@@ -56,7 +48,6 @@ public class QueryTimeTester implements BaseTimeTester {
             }
 
             methodToTest.invoke(instanceofObject, parameters);
-            Timestamp invoke_end = new Timestamp(System.currentTimeMillis());
 
             // get time of query execution
             String testSql = "SELECT start_time, sql_text, query_time FROM mysql.slow_log WHERE user_host LIKE '%" +
@@ -72,7 +63,6 @@ public class QueryTimeTester implements BaseTimeTester {
                     continue;
 
                 queryExecutionTime = rs.getString("query_time");
-                String startTime = rs.getString("start_time");
                 queryTimes.put(queryText,queryExecutionTime);
             }
 

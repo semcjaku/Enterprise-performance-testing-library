@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Enterprise-performance-testing-library:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Enterprise_performance_testing_library_jar</output-path>
+    <root id="archive" name="Enterprise-performance-testing-library.jar">
+      <element id="module-output" name="Enterprise-performance-testing-library" />
+      <element id="library" level="project" name="mysql-connector-java-8.0.18" />
+    </root>
+  </artifact>
+</component>

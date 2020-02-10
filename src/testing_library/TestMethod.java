@@ -18,4 +18,5 @@ public @interface TestMethod {
     Tester.TestStrategy[] testedValue();
     int[] indicesOfParameters();
     int indexOfConnector() default -1;
+    String dbUser() default "";
 }

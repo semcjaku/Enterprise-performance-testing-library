@@ -14,6 +14,7 @@ public class MethodTestWrapper {
     protected Tester.TestStrategy strategy;
     protected Object[] parameters;
     protected Connection dbc;
+    protected String user;
 
     public MethodTestWrapper() {}
 }

@@ -60,7 +60,7 @@ public class ClockTimeTester implements BaseTimeTester {
 
     @Override
     public String toString() {
-        return "TestingLibrary.clockTimeTester{" + " \nclock time = " + ticks + " \nfor method *" + methodToTest + "*}\n";
+        return "TestingLibrary.clockTimeTester{Method: " + methodToTest.getName() + ", Clock time: " + ticks + "}\n";
     }
 
     public void main(final String[] args) {
